@@ -1,6 +1,9 @@
 package numeral
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var romanUnits = []struct {
 	symbol string
@@ -35,5 +38,20 @@ func ToRoman(i int) string {
 
 // FromRoman Convert Roman Number to Arabic
 func FromRoman(s string) (int, error) {
-	return 0, fmt.Errorf("Not implemented yet")
+	i := 0
+	sTemp := s
+	for _, unit := range romanUnits {
+		for {
+			pos := strings.Index(sTemp, unit.symbol)
+			if pos != 0 {
+				break
+			}
+			i = i + unit.value
+			sTemp = sTemp[len(unit.symbol):]
+		}
+	}
+	if len(sTemp) > 0 {
+		return 0, fmt.Errorf("Not roman number %s", s)
+	}
+	return i, nil
 }

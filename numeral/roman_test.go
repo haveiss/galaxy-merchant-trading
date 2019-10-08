@@ -1,6 +1,10 @@
 package numeral
 
-import "testing"
+import (
+	"fmt"
+	"reflect"
+	"testing"
+)
 
 func TestToRoman(t *testing.T) {
 	tests := []struct {
@@ -63,10 +67,13 @@ func TestFromRoman(t *testing.T) {
 		{"CMXCIX", 999, nil},
 		{"MCMIII", 1903, nil},
 		{"MCMLXXXIX", 1989, nil},
+		{"ABC", 0, fmt.Errorf("Not roman number %s", "ABC")},
+		{"CXLVX", 0, fmt.Errorf("Not roman number %s", "CXLVX")},
+		{"IIIXXXX", 0, fmt.Errorf("Not roman number %s", "IIIXXXX")},
 	}
 
 	for _, test := range tests {
-		if got, err := FromRoman(test.input); got != test.want || err != test.err {
+		if got, err := FromRoman(test.input); got != test.want || !reflect.DeepEqual(err, test.err) {
 			t.Errorf("FromRoman(%s)=(%d, %+v), want=(%d, %+v)", test.input, got, err, test.want, test.err)
 		}
 	}
