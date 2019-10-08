@@ -11,6 +11,9 @@ type CustomUnit struct {
 
 // AddUnit Add Unit to dictionary
 func (u *CustomUnit) AddUnit(word string, symbol string) {
+	if u.units == nil {
+		u.units = map[string]string{}
+	}
 	u.units[word] = symbol
 }
 

@@ -43,24 +43,24 @@ func ParseInstruction(s string) (string, interface{}, error) {
 
 //AddUnitArgs ParseInstruction emit AddUnitArgs when instruction matched pattern
 type AddUnitArgs struct {
-	word   string
-	symbol string
+	Word   string
+	Symbol string
 }
 
 //SetItemWithQtyArgs ParseInstruction emit SetItemWithQtyArgs when instruction matched pattern
 type SetItemWithQtyArgs struct {
-	words      string
-	itemName   string
-	totalValue float64
+	Words      string
+	ItemName   string
+	TotalValue float64
 }
 
 //ToIntArgs ParseInstruction emit ToIntArgs when instruction matched pattern
 type ToIntArgs struct {
-	words string
+	Words string
 }
 
 //QueryArgs ParseInstruction emit QueryArgs when instruction matched pattern
 type QueryArgs struct {
-	words    string
-	itemName string
+	Words    string
+	ItemName string
 }
