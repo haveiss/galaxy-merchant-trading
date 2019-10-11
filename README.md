@@ -69,6 +69,42 @@ glob prok Iron is 782 Credits
 I have no idea what you are talking about 
 ```
 
+## How to run
+
+### Using Go
+
+To install cli, simply run:
+
+```
+go get github.com/haveiss/galaxy-merchant-trading/cmd/galaxy_trading
+```
+
+To run interactively
+
+```
+galaxy_trading
+```
+
+To run from input file
+
+```
+galaxy_trading < input.txt
+```
+
+### Using Docker
+
+To run interactively
+
+```
+docker run -it haveiss/galaxy-merchant-trading:latest
+```
+
+To run from input file
+
+```
+cat input.txt | docker run -i haveiss/galaxy-merchant-trading:latest
+```
+
 ## Requirements
 
 - Input to your program consists of lines of text detailing your notes on the conversion between
